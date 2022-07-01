@@ -3,6 +3,7 @@ package config
 import (
 	"fmt"
 	"log"
+	"test/entity"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -27,5 +28,5 @@ func InitDB(config AppConfig) *gorm.DB {
 
 func AutoMigrate(db *gorm.DB) {
 	// migrate database
-	db.AutoMigrate()
+	db.AutoMigrate(&entity.Admin{},&entity.User{})
 }
